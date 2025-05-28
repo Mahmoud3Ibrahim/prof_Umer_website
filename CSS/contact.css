@@ -201,7 +201,7 @@
     }
 }
 
-/* Social Links Section */
+/* Social Links Section - RENAMED TO AVOID CONFLICT */
 .social-section {
     padding: var(--section-spacing) 0;
     margin-top: 2rem;
@@ -225,22 +225,61 @@
     text-align: center;
 }
 
-.social-links {
+/* FIXED: Changed from .social-links to .contact-social-grid */
+.contact-social-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
 }
 
+/* FIXED: Added proper definition for contact social links */
+.contact-social-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
 
-.social-link:hover::before {
+.contact-social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.contact-social-link:hover::before {
     left: 100%;
 }
 
-.social-link:hover {
+.contact-social-link:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-primary);
     border-color: var(--primary-blue);
+}
+
+.social-link-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
 }
 
 .social-link-content h4 {
@@ -255,7 +294,6 @@
     font-size: 0.9rem;
 }
 
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .contact-grid {
@@ -268,12 +306,12 @@
         padding: 2rem;
     }
 
-    .social-links {
+    .contact-social-grid {
         grid-template-columns: 1fr;
     }
 
     .contact-method,
-    .social-link {
+    .contact-social-link {
         padding: 1rem;
     }
 
@@ -292,7 +330,7 @@
     }
 
     .contact-method,
-    .social-link {
+    .contact-social-link {
         flex-direction: column;
         text-align: center;
         gap: 1rem;
