@@ -1,4 +1,57 @@
 // Research Page JavaScript - Clean and Organized
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 JavaScript loaded successfully!');
+    
+    // Find DOM elements
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    
+    console.log('Menu Toggle:', menuToggle);
+    console.log('Main Nav:', mainNav);
+    
+    if (menuToggle && mainNav) {
+        console.log('✅ Elements found, adding event listener');
+        
+        // Add event listener to toggle button
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            console.log('🎯 Menu toggle clicked!');
+            
+            // Toggle active classes
+            mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            
+            console.log('Nav active:', mainNav.classList.contains('active'));
+            console.log('Toggle active:', menuToggle.classList.contains('active'));
+        });
+        
+        // Close menu when clicking navigation links
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+                console.log('📱 Menu closed via nav link');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!menuToggle.contains(e.target) && !mainNav.contains(e.target)) {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+        
+    } else {
+        console.error('❌ Menu elements not found!');
+        if (!menuToggle) console.error('❌ .menu-toggle not found');
+        if (!mainNav) console.error('❌ .main-nav not found');
+    }
+});
 document.addEventListener('DOMContentLoaded', function() {
     
     // 1. Mobile Navigation Toggle
