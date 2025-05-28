@@ -247,7 +247,8 @@ function initContactMethodEffects() {
 
 // Social links enhanced effects
 function initSocialLinkEffects() {
-    document.querySelectorAll('.social-link').forEach(link => {
+    // CHANGED: from '.social-link' to '.contact-social-link'
+    document.querySelectorAll('.contact-social-link').forEach(link => {
         link.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-8px) scale(1.02)';
             
