@@ -1,303 +1,441 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Umer Altaf - Contact</title>
-    <meta name="description" content="Get in touch with Dr. Umer Altaf for collaboration, consultation, and research opportunities">
+/* Contact Page Specific Styles */
+
+/* Contact Section */
+.contact-section {
+    padding: var(--section-spacing) 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-top: 2rem;
+}
+
+.contact-info h2,
+.contact-form h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.contact-info p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* Contact Methods */
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-method::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.contact-method:hover::before {
+    left: 100%;
+}
+
+.contact-method:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-primary);
+    border-color: var(--primary-blue);
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.contact-details h4 {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.contact-details p {
+    color: var(--text-muted);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Contact Form */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 1rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.submit-btn {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-primary);
+}
+
+.submit-btn:active {
+    transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Success Message */
+.success-message {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    animation: slideIn 0.3s ease;
+}
+
+.success-message.show {
+    display: flex;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Social Links Section - RENAMED TO AVOID CONFLICT */
+.social-section {
+    padding: var(--section-spacing) 0;
+    margin-top: 2rem;
+}
+
+.social-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
+.social-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* FIXED: Changed from .social-links to .contact-social-grid */
+.contact-social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* FIXED: Added proper definition for contact social links */
+.contact-social-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.contact-social-link:hover::before {
+    left: 100%;
+}
+
+.contact-social-link:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-primary);
+    border-color: var(--primary-blue);
+}
+
+.social-link-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.social-link-content h4 {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.social-link-content p {
+    color: var(--text-muted);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 2rem;
+    }
+
+    .contact-social-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-method,
+    .contact-social-link {
+        padding: 1rem;
+    }
+
+    .contact-icon,
+    .social-link-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info,
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .contact-method,
+    .contact-social-link {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .social-title {
+        font-size: 2rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 0.8rem;
+    }
+
+    .submit-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Animation for contact methods */
+.contact-method {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.contact-method:nth-child(1) { animation-delay: 0.1s; }
+.contact-method:nth-child(2) { animation-delay: 0.2s; }
+.contact-method:nth-child(3) { animation-delay: 0.3s; }
+.contact-method:nth-child(4) { animation-delay: 0.4s; }
+.contact-method:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced form styles */
+.form-group select option {
+    background: var(--dark-bg);
+    color: var(--text-primary);
+}
+
+/* Loading state for submit button */
+.submit-btn.loading {
+    position: relative;
+    color: transparent;
+}
+
+.submit-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Notification styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    z-index: 10000;
+    font-weight: 500;
+    box-shadow: var(--shadow-primary);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        background: rgba(255, 255, 255, 0.03);
+    }
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-
-     <!-- Favicon -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="../CSS/shared.css">
-    <link rel="stylesheet" href="../CSS/contact.css">
-    
-<!-- Open Graph Meta Tags -->
-<meta property="og:title" content="Dr. Umer Altaf - Professor & Data Science Expert">
-<meta property="og:description" content="Professor at Algonquin College with 25+ years experience in Data Science and Machine Learning">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://yourwebsite.com">
-<meta property="og:image" content="https://via.placeholder.com/1200x630/0066cc/ffffff?text=Dr.+Umer+Altaf+PhD">
-
-<!-- Twitter Cards -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Dr. Umer Altaf - Professor & Data Science Expert">
-<meta name="twitter:description" content="Professor at Algonquin College with 25+ years experience in Data Science and Machine Learning">
-<meta name="twitter:image" content="https://via.placeholder.com/1200x630/0066cc/ffffff?text=Dr.+Umer+Altaf+PhD">
-
-</head>
-<body>
-    <!-- Animated Background -->
-    <div class="animated-bg">
-        <div class="floating-particles"></div>
-    </div>
-
-    <!-- Header -->
-    <header class="glass-header">
-        <div class="nav-container">
-            <a href="../index.html" class="logo">
-                <span class="logo-text">Dr. Umer Altaf</span>
-                <span class="logo-subtitle">PhD</span>
-            </a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="../index.html" class="nav-link">
-                        <span class="nav-icon">🏠</span>
-                        <span class="nav-text">Home</span>
-                    </a></li>
-                    <li><a href="./research.html" class="nav-link">
-                        <span class="nav-icon">🔬</span>
-                        <span class="nav-text">Research</span>
-                    </a></li>
-
-                      <li><a href="./teaching.html" class="nav-link">
-                        <span class="nav-icon">📚</span>
-                        <span class="nav-text">Teaching</span>
-                    </a></li>
-
-                    <li><a href="./cv.html" class="nav-link">
-                        <span class="nav-icon">📄</span>
-                        <span class="nav-text">CV</span>
-                    </a></li>
-                    <li><a href="./Certificates.html" class="nav-link">
-                        <span class="nav-icon">🏆</span>
-                        <span class="nav-text">Certificates</span>
-                    </a></li>
-                    <li><a href="./contact.html" class="nav-link active">
-                        <span class="nav-icon">📧</span>
-                        <span class="nav-text">Contact</span>
-                    </a></li>
-                </ul>
-            </nav>
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Hero Section -->
-            <section class="hero-section">
-                <h1 class="hero-title">
-                    <span class="title-line">Get In</span>
-                    <span class="title-line gradient-text">Touch</span>
-                </h1>
-                <p class="hero-subtitle">Let's connect! Whether you're interested in collaboration, consultation, or just want to discuss exciting opportunities</p>
-            </section>
-
-            <!-- Contact Section -->
-            <section class="contact-section">
-                <div class="contact-grid">
-                    <!-- Contact Info -->
-                    <div class="contact-info glass-card">
-                        <h2>Contact Information</h2>
-                        <p>I'm always open to discussing new opportunities, research collaborations, and innovative projects. Feel free to reach out through any of the following channels:</p>
-                        
-                        <div class="contact-methods">
-                            <a href="mailto:umaraltaf74@hotmail.com" class="contact-method">
-                                <div class="contact-icon">📧</div>
-                                <div class="contact-details">
-                                    <h4>Email</h4>
-                                    <p>umaraltaf74@hotmail.com</p>
-                                </div>
-                            </a>
-
-                            <a href="tel:+1-613-853-3107" class="contact-method">
-                                <div class="contact-icon">📞</div>
-                                <div class="contact-details">
-                                    <h4>Phone</h4>
-                                    <p>+1 (613) 853-3107</p>
-                                </div>
-                            </a>
-
-                            <div class="contact-method">
-                                <div class="contact-icon">📍</div>
-                                <div class="contact-details">
-                                    <h4>Location</h4>
-                                    <p>Ottawa, Ontario, Canada</p>
-                                </div>
-                            </div>
-
-                            <div class="contact-method">
-                                <div class="contact-icon">🏢</div>
-                                <div class="contact-details">
-                                    <h4>Institution</h4>
-                                    <p>Algonquin College - School of Advanced Technology</p>
-                                </div>
-                            </div>
-
-                            <div class="contact-method">
-                                <div class="contact-icon">⏰</div>
-                                <div class="contact-details">
-                                    <h4>Office Hours</h4>
-                                    <p>Monday - Friday: 9:00 AM - 5:00 PM EST</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Contact Form -->
-                    <div class="contact-form glass-card">
-                        <h2>Send Message</h2>
-                        <div class="success-message" id="successMessage">
-                            <span>✅</span>
-                            <span>Thank you! Your message has been sent successfully.</span>
-                        </div>
-                        
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required placeholder="Enter your email address">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="subject">Subject *</label>
-                                <select id="subject" name="subject" required>
-                                    <option value="">Select a subject</option>
-                                    <option value="research">Research Collaboration</option>
-                                    <option value="consultation">Consultation Services</option>
-                                    <option value="speaking">Speaking Engagement</option>
-                                    <option value="academic">Academic Partnership</option>
-                                    <option value="student">Student Inquiry</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="organization">Organization/Institution</label>
-                                <input type="text" id="organization" name="organization" placeholder="Your organization or institution">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message">Message *</label>
-                                <textarea id="message" name="message" required placeholder="Please describe your inquiry or project in detail..."></textarea>
-                            </div>
-
-                            <button type="submit" class="submit-btn">
-                                <span>📤</span>
-                                <span>Send Message</span>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Social Links Section -->
-                    <section class="social-section">
-                <div class="glass-card">
-                    <h2 class="social-title">Connect Professionally</h2>
-                    <p class="social-subtitle">Follow my work and connect with me on professional platforms</p>
-                    
-                    <!-- CHANGED: from social-links to contact-social-grid -->
-                    <div class="contact-social-grid">
-                        <!-- CHANGED: from social-link to contact-social-link -->
-                        <a href="https://www.researchgate.net/profile/Umer-Altaf" target="_blank" class="contact-social-link">
-                            <div class="social-link-icon">🔬</div>
-                            <div class="social-link-content">
-                                <h4>ResearchGate</h4>
-                                <p>View my publications and research activities</p>
-                            </div>
-                        </a>
-
-                        <a href="https://scholar.google.com/citations?user=tCvWzLEAAAAJ&hl=en" target="_blank" class="contact-social-link">
-                            <div class="social-link-icon">📚</div>
-                            <div class="social-link-content">
-                                <h4>Google Scholar</h4>
-                                <p>Academic publications and citation metrics</p>
-                            </div>
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/umer-altaf-phd-24b40bb5/" target="_blank" class="contact-social-link">
-                            <div class="social-link-icon">💼</div>
-                            <div class="social-link-content">
-                                <h4>LinkedIn</h4>
-                                <p>Professional network and career updates</p>
-                            </div>
-                        </a>
-
-                        <a href="https://www.tutorbright.com/math-tutoring" target="_blank" class="contact-social-link">
-                            <div class="social-link-icon">🆔</div>
-                            <div class="social-link-content">
-                                <h4>tutorbright</h4>
-                                <p>expert math tutors</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
-  <!-- Footer -->
-    <footer class="glass-footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Dr. Umer Altaf</h3>
-                <p>Advancing scientific knowledge through innovative research and education. Bridging the gap between theory and practice.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <div class="footer-links">
-                    <a href="html/research.html">
-                        <span>🔬</span> Research
-                    </a>
-                    <a href="html/cv.html">
-                        <span>📄</span> CV
-                    </a>
-                    <a href="html/Certificates.html">
-                        <span>🏆</span> Certificates
-                    </a>
-                    <a href="html/contact.html">
-                        <span>📧</span> Contact
-                    </a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Connect With Me</h4>
-                <div class="social-links">
-                    <a href="https://www.researchgate.net/profile/Umer-Altaf" target="_blank" class="social-link">
-                        <span>🔬</span> ResearchGate
-                    </a>
-                    <a href="https://scholar.google.com/citations?user=tCvWzLEAAAAJ&hl=en" target="_blank" class="social-link">
-                        <span>📚</span> Google Scholar
-                    </a>
-                    <a href="https://www.linkedin.com/in/umer-altaf-phd-24b40bb5/" target="_blank" class="social-link">
-                        <span>💼</span> LinkedIn
-                    </a>
-                    <a href="mailto:umaraltaf74@hotmail.com" class="social-link">
-                        <span>📧</span> Email
-                    </a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Latest Updates</h4>
-                <p style="margin-bottom: 1rem;">Stay updated with my latest research publications and academic activities.</p>
-                <a href="html/research.html" class="btn-secondary">
-                    <span>📰</span> View Recent Work
-                </a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 Dr. Umer Altaf. All rights reserved. </p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="../JavaScript/shared.js"></script>
-    <script src="../JavaScript/contact.js"></script>
-</body>
-</html>
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+        background: rgba(255, 255, 255, 0.05);
+    }
+}
